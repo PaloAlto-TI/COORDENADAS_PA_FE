@@ -70,9 +70,9 @@ const ProductList = () => {
         <div className="datatable-responsive-demo">
             <div className="card">
                 <DataTable header={header} selectionMode="single" value={products} className="p-datatable-responsive-demo" paginator rows={10}  globalFilter={globalFilter} >
-                    <Column field="CODIGO" style={{width:'20%'}} header="CODIGO" body={nameBodyTemplate} sortable/>
-                    <Column field="NOMBRE" style={{width:'60%'}} header="NOMBRE" body={categoryBodyTemplate} sortable/>
-                    <Column field="UNIDAD" style={{width:'20%'}} header="UNIDAD" body={quantityBodyTemplate} sortable/>
+                    <Column field="CODIGO"  header="CODIGO" body={nameBodyTemplate} sortable/>
+                    <Column field="NOMBRE"  header="NOMBRE" body={categoryBodyTemplate} sortable/>
+                    <Column field="UNIDAD"  header="UNIDAD" body={quantityBodyTemplate} sortable/>
                 </DataTable>
             </div>
         </div>

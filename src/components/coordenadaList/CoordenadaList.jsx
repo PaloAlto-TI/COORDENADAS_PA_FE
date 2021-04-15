@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "primereact/button";
 import "./CoordenadaList.css";
 
 const CoordenadaList = (props) => {
 
-  const {cambio} = props;
+  const {cambio, pasar} = props;
 
   console.log(cambio);
 
+  const [state, setState] = useState(null);
+
+  const replace = () => {
+
+    pasar();
+  }
 
   var names = [
     "A1-1",
@@ -22,17 +28,23 @@ const CoordenadaList = (props) => {
     "A2-5",
   ];
   var namesList = names.map(function (name) {
+    
     return (
+
+      !state ?
       <div  key={name} className="p-col-5">
         <Button
           type="button"
           label={name}
           badge="8"
+          onClick={() => replace()}
           className="p-d-block p-mx-auto"
         />
-      </div>
+      </div> : <p></p>
     );
   });
+
+  
   return (
     <div className="p-p-4">
     <div className="p-grid p-justify-center">{namesList}</div>

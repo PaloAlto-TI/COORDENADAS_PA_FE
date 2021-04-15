@@ -7,14 +7,15 @@ import CoordenadaList from "./components/coordenadaList/CoordenadaList";
 import 'primeflex/primeflex.css';
 import ProductList from "./components/productList/ProductList";
 import Bodega from "./components/bodega/Bodega";
+import Login from "./components/login/Login";
 
 function App() {
   return <div className="App">
 
       {/* <Login></Login> */}
       {/* <Home></Home> */}
-      {/* <Bodega></Bodega> */}
-      <ProductList></ProductList>
+      <Bodega></Bodega>
+      {/* <ProductList></ProductList> */}
       {/* <Producto></Producto> */}
       {/* <CoordenadaList></CoordenadaList> */}
   </div>;

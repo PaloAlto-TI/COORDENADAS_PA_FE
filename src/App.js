@@ -6,6 +6,7 @@ import 'primeicons/primeicons.css';
 import CoordenadaList from "./components/coordenadaList/CoordenadaList";
 import 'primeflex/primeflex.css';
 import ProductList from "./components/productList/ProductList";
+import Prueba1 from "./components/prueba_jc/Prueba1";
 import Bodega from "./components/bodega/Bodega";
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
       {/* <Login></Login> */}
       {/* <Home></Home> */}
       {/* <Bodega></Bodega> */}
-      <ProductList></ProductList>
+      <Prueba1></Prueba1>
       {/* <Producto></Producto> */}
       {/* <CoordenadaList></CoordenadaList> */}
   </div>;

@@ -19,6 +19,7 @@
     "react-scripts": "4.0.3",
     "react-transition-group": "^4.4.1",
     "serve": "^11.3.2",
+    "tabletop": "^1.6.3",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.3",
     "workbox-broadcast-update": "^5.1.3",

@@ -2,7 +2,13 @@ import React from "react";
 import { Button } from "primereact/button";
 import "./CoordenadaList.css";
 
-const CoordenadaList = () => {
+const CoordenadaList = (props) => {
+
+  const {cambio} = props;
+
+  console.log(cambio);
+
+
   var names = [
     "A1-1",
     "A2-1",
@@ -17,7 +23,7 @@ const CoordenadaList = () => {
   ];
   var namesList = names.map(function (name) {
     return (
-      <div className="p-col-5">
+      <div  key={name} className="p-col-5">
         <Button
           type="button"
           label={name}

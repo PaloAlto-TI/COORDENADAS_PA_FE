@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
-
-import ProductService from '../../services/productList/ProductListService';
+import Tabletop from "tabletop";
+import ProductService from '../../services/products/ProductsService';
 import './ProductList.css';
 
 const ProductList = () => {
@@ -11,8 +11,14 @@ const ProductList = () => {
     const productService = new ProductService();
     const [globalFilter, setGlobalFilter] = useState(null);
     useEffect(() => {
-        productService.getProducts().then(data => setProducts(data));
+        Tabletop.init({
+            key: "1ql5KNB3jFHOAdqnZ0whtO2PHqOnTs5J0upieWU3v1L8",
+            simpleSheet: true
+          }).then(data => setProducts(data));
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    console.log(products)
+    
 
     const header = (
         <div className="table-header">
@@ -27,8 +33,8 @@ const ProductList = () => {
     const codeBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <span className="p-column-title">Code</span>
-                {rowData.code}
+                <span className="p-column-title">ID</span>
+                {rowData._id}
             </React.Fragment>
         );
     }
@@ -36,8 +42,8 @@ const ProductList = () => {
     const nameBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <span className="p-column-title">Name</span>
-                {rowData.name}
+                <span className="p-column-title">CODIGO</span>
+                {rowData.CODIGO}
             </React.Fragment>
         );
     }
@@ -45,8 +51,8 @@ const ProductList = () => {
     const categoryBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <span className="p-column-title">Category</span>
-                {rowData.category}
+                <span className="p-column-title">NOMBRE</span>
+                {rowData.NOMBRE}
             </React.Fragment>
         );
     }
@@ -54,8 +60,8 @@ const ProductList = () => {
     const quantityBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <span className="p-column-title">Quantity</span>
-                {rowData.quantity}
+                <span className="p-column-title">UNIDAD</span>
+                {rowData.UNIDAD}
             </React.Fragment>
         );
     }
@@ -63,11 +69,10 @@ const ProductList = () => {
     return (
         <div className="datatable-responsive-demo">
             <div className="card">
-                <DataTable header={header}  selectionMode="single" value={products} className="p-datatable-responsive-demo" paginator rows={10}  globalFilter={globalFilter} >
-                    <Column field="code" header="Code" body={codeBodyTemplate} sortable/>
-                    <Column field="name" header="Name" body={nameBodyTemplate} sortable/>
-                    <Column field="category" header="Category" body={categoryBodyTemplate} sortable/>
-                    <Column field="quantity" header="Quantity" body={quantityBodyTemplate} sortable/>
+                <DataTable header={header} selectionMode="single" value={products} className="p-datatable-responsive-demo" paginator rows={10}  globalFilter={globalFilter} >
+                    <Column field="CODIGO" style={{width:'20%'}} header="CODIGO" body={nameBodyTemplate} sortable/>
+                    <Column field="NOMBRE" style={{width:'60%'}} header="NOMBRE" body={categoryBodyTemplate} sortable/>
+                    <Column field="UNIDAD" style={{width:'20%'}} header="UNIDAD" body={quantityBodyTemplate} sortable/>
                 </DataTable>
             </div>
         </div>

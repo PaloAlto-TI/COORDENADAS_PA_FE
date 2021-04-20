@@ -3,6 +3,7 @@ import { TabView, TabPanel } from "primereact/tabview";
 import CoordenadaList from "../coordenadaList/CoordenadaList";
 import BodegaService from "../../services/bodegas/BodegaService";
 import "./Bodega.css";
+import ProductList from "../productList/ProductList";
 
 const Bodega = () => {
 
@@ -52,7 +53,7 @@ const Bodega = () => {
           { !state ?
           <TabView>
             {namesList}
-          </TabView> : <p>chao</p>
+          </TabView>:<ProductList/> 
         }
         </div>
       </div>

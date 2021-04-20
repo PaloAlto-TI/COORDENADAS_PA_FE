@@ -8,6 +8,7 @@ import 'primeflex/primeflex.css';
 import ProductList from "./components/productList/ProductList";
 import Bodega from "./components/bodega/Bodega";
 import Login from "./components/login/Login";
+import Producto from "./components/producto/Producto";
 
 function App() {
   return <div className="App">

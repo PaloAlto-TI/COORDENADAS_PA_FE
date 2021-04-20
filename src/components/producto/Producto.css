@@ -5,4 +5,8 @@
 .dropdown-demo .country-item-value img.flag {
     width: 17px;
 }
-     
+
+.test{
+    z-index: 1000;
+}
+    

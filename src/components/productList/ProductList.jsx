@@ -111,8 +111,8 @@ const ProductList = () => {
                     <Column field="NOMBRE" header="NOMBRE" body={categoryBodyTemplate} sortable />
                     <Column field="UNIDAD" header="UNIDAD" body={quantityBodyTemplate} sortable />
                 </DataTable>
-                <Dialog header="Header" visible={displayResponsive} onHide={() => onHide('displayResponsive')} breakpoints={{'960px': '75vw'}} style={{width: '50vw'}} footer={renderFooter('displayResponsive')} >
-                    <ScrollPanel>
+                <Dialog blockScroll={true} contentStyle={{overflow:"visible"}} header="Header" visible={displayResponsive} onHide={() => onHide('displayResponsive')} breakpoints={{'960px': '75vw'}} style={{width: '50vw'}} footer={renderFooter('displayResponsive')} >
+                    <ScrollPanel style={{ width: '100%', height: '100px' }} >
                         <Producto/>    
                     </ScrollPanel>
 

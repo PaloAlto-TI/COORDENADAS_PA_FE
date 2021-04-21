@@ -8,7 +8,18 @@ import ProductList from "../productList/ProductList";
 const Bodega = () => {
 
   const [state, setState] = useState(null)
-  const [bodega, setBodega] = useState({"estado":1,"_id":"6074eda7ea08623eec4f894b","codigo":"123","nombre":"Bodega 1","dimension":{"z":0,"_id":"6074eda7ea08623eec4f894c","x":1,"y":2},"productos":[{"_id":"6074eda7ea08623eec4f894d","producto":"604110eae01a28033c344cca","cantidad":1,"coordenadas":{"z":3,"_id":"6074eda7ea08623eec4f894e","x":1,"y":2},"observacion":"NADA"}],"__version":0})
+  const [bodega, setBodega] = useState({
+    id:"",
+    codigo:"",
+    nombre:"",
+    estado:0,
+    dimension:{
+      x:0,
+      y:0,
+      z:0
+    },
+    coordenadas:[]
+  })
 
   const bodegaService = new BodegaService();
 

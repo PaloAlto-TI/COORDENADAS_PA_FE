@@ -62,7 +62,7 @@ const Bodega = () => {
 
       
       <TabPanel key={aux} header={aux}>
-      <CoordenadaList cambio={coordenada} pasar={pasar} />
+      <CoordenadaList stateB={bodega} stateBS={setBodega} pasar={pasar} />
       </TabPanel>
      
     );

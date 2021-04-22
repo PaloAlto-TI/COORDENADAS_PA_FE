@@ -11,7 +11,9 @@ import { ScrollPanel } from 'primereact/scrollpanel';
 import ProductService from '../../services/products/ProductsService';
 import './ProductList.css';
 
-const ProductList = () => {
+const ProductList = (props) => {
+
+    const {productos} =props;
     const [products, setProducts] = useState([]);
     const [globalFilter, setGlobalFilter] = useState(null);
 
@@ -45,13 +47,13 @@ const ProductList = () => {
     }
 
     useEffect(() => {
-        Tabletop.init({
-            key: "1ql5KNB3jFHOAdqnZ0whtO2PHqOnTs5J0upieWU3v1L8",
-            simpleSheet: true
-        }).then(data => setProducts(data));
+        // Tabletop.init({
+        //     key: "1ql5KNB3jFHOAdqnZ0whtO2PHqOnTs5J0upieWU3v1L8",
+        //     simpleSheet: true
+        // }).then(data => setProducts(data));
+        setProducts(productos);
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    console.log(products)
 
 
     const header = (
@@ -76,9 +78,9 @@ const ProductList = () => {
     const nameBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <span className="p-column-title">CODIGO</span>
+                <span className="p-column-title">codigo</span>
                 <br/>
-                {rowData.CODIGO}
+                {rowData.codigo}
             </React.Fragment>
         );
     }
@@ -86,9 +88,9 @@ const ProductList = () => {
     const categoryBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <span className="p-column-title">NOMBRE</span>
+                <span className="p-column-title">CANTIDAD</span>
                 <br/>
-                {rowData.NOMBRE}
+                {rowData.cantidad}
             </React.Fragment>
         );
     }
@@ -107,9 +109,10 @@ const ProductList = () => {
         <div className="datatable-responsive-demo">
             <div className="card">
                 <DataTable header={header} selectionMode="single" value={products} className="p-datatable-responsive-demo" paginator rows={10} globalFilter={globalFilter} onSelectionChange={() => setDisplayResponsive(true)} >
-                    <Column field="CODIGO" header="CODIGO" body={nameBodyTemplate} sortable/>
-                    <Column field="NOMBRE" header="NOMBRE" body={categoryBodyTemplate} sortable />
-                    <Column field="UNIDAD" header="UNIDAD" body={quantityBodyTemplate} sortable />
+                    <Column field="codigo" header="codigo" body={nameBodyTemplate} sortable/>
+                    <Column field="cantidad" header="cantidad" body={categoryBodyTemplate} sortable />
+                    <Column field="observacion" header="observacion" sortable />
+
                 </DataTable>
                 <Dialog blockScroll={true} contentStyle={{overflow:"visible"}} header="Header" visible={displayResponsive} onHide={() => onHide('displayResponsive')} breakpoints={{'960px': '75vw'}} style={{width: '50vw'}} footer={renderFooter('displayResponsive')} >
                     <ScrollPanel style={{ width: '100%', height: '100px' }} >

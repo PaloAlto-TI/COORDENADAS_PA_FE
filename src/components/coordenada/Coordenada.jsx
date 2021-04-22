@@ -4,7 +4,10 @@ import ProductList from '../productList/ProductList';
 
 const Coordenada  = (props) => {
 
-    const {nombre} = props;
+    const {nombre, productos} = props;
+
+    console.log(props)
+
     return (
         <div>
 
@@ -12,7 +15,7 @@ const Coordenada  = (props) => {
                 <p>{nombre}</p>
         </Panel>
         <Panel header="CONTENIDO">
-        <ProductList></ProductList>
+        <ProductList productos={productos}></ProductList>
         </Panel>
         </div>
     )

@@ -35,8 +35,8 @@ const Bodega = () => {
   const pasar = (nombre, productos) => {
 
     console.log('p',productos);
-    setNombre(nombre)
     setProductos(productos)
+    setNombre(nombre)
     setState(true)
   }
 
@@ -56,7 +56,7 @@ const Bodega = () => {
 
   var namesList = bodega.coordenadas.map(function (coordenada) {
     
-    var aux = names[coordenada[0].ubicacion.z]
+    var aux = names[coordenada.seccion[0].ubicacion.z]
     
     return (
 

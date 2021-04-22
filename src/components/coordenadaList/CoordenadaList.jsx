@@ -15,7 +15,7 @@ const CoordenadaList = (props) => {
     pasar(nombre, productos);
   }
 
-  var names = cambio
+  var names = cambio.seccion
 
   var namesList = names.map(function (name) {
     
@@ -26,7 +26,7 @@ const CoordenadaList = (props) => {
         <Button
           type="button"
           label={name.nombre}
-          badge={name.productos.length.toString()}
+          badge={name.productos.length>0 ? name.productos.map(a => a.cantidad).reduce((a, b) => a + b, 0) : "0"}
           onClick={() => replace(name.nombre, name.productos)}
           className="p-d-block p-mx-auto"
         />

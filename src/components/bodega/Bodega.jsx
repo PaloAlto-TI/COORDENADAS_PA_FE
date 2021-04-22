@@ -4,10 +4,13 @@ import CoordenadaList from "../coordenadaList/CoordenadaList";
 import BodegaService from "../../services/bodegas/BodegaService";
 import "./Bodega.css";
 import ProductList from "../productList/ProductList";
+import Coordenada from "../coordenada/Coordenada";
 
 const Bodega = () => {
 
   const [state, setState] = useState(null)
+  const [nombre, setNombre] = useState(null)
+
   const [bodega, setBodega] = useState({
     id:"",
     codigo:"",
@@ -27,8 +30,9 @@ const Bodega = () => {
 
 
 
-  const pasar = () => {
+  const pasar = (nombre) => {
 
+    setNombre(nombre)
     setState(true)
   }
 
@@ -44,27 +48,44 @@ const Bodega = () => {
   if (bodega.dimension){
     names = Array.from({ length: bodega.dimension.z }, (_, i) => String.fromCharCode('A'.charCodeAt(0) + i));
   }
-  var namesList = names.map(function (name) {
+
+
+  var namesList = bodega.coordenadas.map(function (coordenada) {
+    
+    var aux = names[coordenada[0].ubicacion.z]
     
     return (
 
       
-      <TabPanel key={name} header={name}>
-      <CoordenadaList cambio={name} pasar={pasar} />
-    </TabPanel>
+      <TabPanel key={aux} header={aux}>
+      <CoordenadaList cambio={coordenada} pasar={pasar} />
+      </TabPanel>
      
     );
   });
+
+  // var namesList = names.map(function (name) {
+        
+  //   return (
+
+      
+  //     <TabPanel key={name} header={name}>
+  //     <CoordenadaList cambio={name} pasar={pasar} />
+  //     </TabPanel>
+     
+  //   );
+  // });
 
   return (
     <div className="p-d-flex p-jc-center">
       <div className="tabview-demo">
         <div className="card">
           <h5>Default</h5>
-          { !state ?
+          { !nombre?
+          
           <TabView>
             {namesList}
-          </TabView>:<ProductList/> 
+          </TabView>:<Coordenada nombre={nombre} /> 
         }
         </div>
       </div>

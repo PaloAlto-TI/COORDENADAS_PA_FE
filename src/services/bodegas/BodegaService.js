@@ -7,7 +7,7 @@ export default class BodegaService {
     // }
 
     getBodega() {
-        return axios.get('http://localhost:8080/bodegas/6079c43b9db72a2f8863715a').then(res => res.data);
+        return axios.get('http://localhost:8080/bodegas/60818a8d057de218dc458390').then(res => res.data);
     }
 
     // getProductsWithOrdersSmall() {

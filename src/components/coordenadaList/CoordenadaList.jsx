@@ -10,34 +10,24 @@ const CoordenadaList = (props) => {
 
   const [state, setState] = useState(null);
 
-  const replace = () => {
+  const replace = (nombre) => {
 
-    pasar();
+    pasar(nombre);
   }
 
-  var names = [
-    "A1-1",
-    "A2-1",
-    "A1-2",
-    "A2-2",
-    "A1-3",
-    "A2-3",
-    "A1-4",
-    "A2-4",
-    "A1-5",
-    "A2-5",
-  ];
+  var names = cambio
+
   var namesList = names.map(function (name) {
     
     return (
 
       !state ?
-      <div  key={name} className="p-col-5">
+      <div  key={name.nombre} className="p-col-5">
         <Button
           type="button"
-          label={name}
+          label={name.nombre}
           badge="8"
-          onClick={() => replace()}
+          onClick={() => replace(name.nombre)}
           className="p-d-block p-mx-auto"
         />
       </div> : <p></p>

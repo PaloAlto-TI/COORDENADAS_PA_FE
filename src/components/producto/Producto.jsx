@@ -58,7 +58,7 @@ const Producto = () => {
         <div className="dropdown-demo">
             <div className="card">
                 <h5>Advanced with Templating, Filtering and Clear Icon</h5>
-                <Dropdown value={selectedCountry} options={countries} onChange={onCountryChange} optionLabel="name" filter showClear filterBy="name" placeholder="Select a Country"
+                <Dropdown className="test" value={selectedCountry} options={countries} onChange={onCountryChange} optionLabel="name" filter showClear filterBy="name" placeholder="Select a Country"
                     valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} />
                 <br/>
                 <br/>

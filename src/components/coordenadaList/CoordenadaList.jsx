@@ -10,9 +10,9 @@ const CoordenadaList = (props) => {
 
   const [state, setState] = useState(null);
 
-  const replace = (nombre) => {
+  const replace = (nombre, productos) => {
 
-    pasar(nombre);
+    pasar(nombre, productos);
   }
 
   var names = cambio
@@ -26,8 +26,8 @@ const CoordenadaList = (props) => {
         <Button
           type="button"
           label={name.nombre}
-          badge="8"
-          onClick={() => replace(name.nombre)}
+          badge={name.productos.length.toString()}
+          onClick={() => replace(name.nombre, name.productos)}
           className="p-d-block p-mx-auto"
         />
       </div> : <p></p>

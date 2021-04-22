@@ -5,11 +5,13 @@ import BodegaService from "../../services/bodegas/BodegaService";
 import "./Bodega.css";
 import ProductList from "../productList/ProductList";
 import Coordenada from "../coordenada/Coordenada";
-
+import { Button } from 'primereact/button'; 
 const Bodega = () => {
 
   const [state, setState] = useState(null)
   const [nombre, setNombre] = useState(null)
+  const [productos, setProductos] = useState([])
+
 
   const [bodega, setBodega] = useState({
     id:"",
@@ -30,9 +32,11 @@ const Bodega = () => {
 
 
 
-  const pasar = (nombre) => {
+  const pasar = (nombre, productos) => {
 
+    console.log('p',productos);
     setNombre(nombre)
+    setProductos(productos)
     setState(true)
   }
 
@@ -80,12 +84,13 @@ const Bodega = () => {
     <div className="p-d-flex p-jc-center">
       <div className="tabview-demo">
         <div className="card">
-          <h5>Default</h5>
+        <Button className="test" icon="pi pi-bookmark" className="p-button-rounded p-button-secondary" onClick={()=>setNombre(null)} />
+
           { !nombre?
           
           <TabView>
             {namesList}
-          </TabView>:<Coordenada nombre={nombre} /> 
+          </TabView>:<Coordenada nombre={nombre} productos={productos}/> 
         }
         </div>
       </div>

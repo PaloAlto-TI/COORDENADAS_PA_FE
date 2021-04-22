@@ -56,7 +56,7 @@ const ProductList = () => {
 
     const header = (
         <div className="table-header">
-            List of Customers
+            Lista de Productos
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
                 <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Global Search" />

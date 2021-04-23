@@ -1,6 +1,7 @@
 import React from 'react'
 import { Panel } from 'primereact/panel';
 import ProductList from '../productList/ProductList';
+import "./Coordenada.css";
 
 const Coordenada  = (props) => {
 
@@ -10,14 +11,14 @@ const Coordenada  = (props) => {
 
     return (
         <div>
-
         <Panel header="NOMBRE DE LA COORDENADA">
-                <p>{nombre}</p>
+        <p>{nombre}</p>
         </Panel>
         <Panel header="CONTENIDO">
         <ProductList productos={productos}></ProductList>
         </Panel>
         </div>
+
     )
 }
 

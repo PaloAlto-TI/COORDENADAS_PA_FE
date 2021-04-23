@@ -61,14 +61,10 @@ const Producto = () => {
                 <Dropdown className="test" value={selectedCountry} options={countries} onChange={onCountryChange} optionLabel="name" filter showClear filterBy="name" placeholder="Select a Country"
                     valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} />
                 <br/>
-                <br/>
-                <br/>
                 <div className="p-field p-col-12 p-md-3">
                         <label htmlFor="stacked">Stacked</label>
                         <InputNumber id="stacked" value={value17} onValueChange={(e) => setValue17(e.value)} showButtons />
                 </div>
-                <br/>
-                <br/>
                 <br/>
                 <h5>Basic</h5>
                 <InputText value={value1} onChange={(e) => setValue1(e.target.value)} />

@@ -1,36 +1,97 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TabView, TabPanel } from "primereact/tabview";
 import CoordenadaList from "../coordenadaList/CoordenadaList";
+import BodegaService from "../../services/bodegas/BodegaService";
 import "./Bodega.css";
-
+import ProductList from "../productList/ProductList";
+import Coordenada from "../coordenada/Coordenada";
+import { Button } from 'primereact/button'; 
 const Bodega = () => {
-  const [state, setState] = useState(null);
+
+  const [state, setState] = useState(null)
+  const [nombre, setNombre] = useState(null)
+  const [productos, setProductos] = useState([])
+
+
+  const [bodega, setBodega] = useState({
+    id:"",
+    codigo:"",
+    nombre:"",
+    estado:0,
+    dimension:{
+      x:0,
+      y:0,
+      z:0
+    },
+    coordenadas:[]
+  })
+
+  const bodegaService = new BodegaService();
+
+  
+
+
+
+  const pasar = (nombre, productos) => {
+
+    console.log('p',productos);
+    setNombre(nombre)
+    setProductos(productos)
+    setState(true)
+  }
+
+  useEffect(() => {
+    bodegaService.getBodega().then((data) => setBodega(data) )
+  }, []);
+
+
+
+  var names = []
+
+
+  if (bodega.dimension){
+    names = Array.from({ length: bodega.dimension.z }, (_, i) => String.fromCharCode('A'.charCodeAt(0) + i));
+  }
+
+
+  var namesList = bodega.coordenadas.map(function (coordenada) {
+    
+    var aux = names[coordenada[0].ubicacion.z]
+    
+    return (
+
+      
+      <TabPanel key={aux} header={aux}>
+      <CoordenadaList cambio={coordenada} pasar={pasar} />
+      </TabPanel>
+     
+    );
+  });
+
+  // var namesList = names.map(function (name) {
+        
+  //   return (
+
+      
+  //     <TabPanel key={name} header={name}>
+  //     <CoordenadaList cambio={name} pasar={pasar} />
+  //     </TabPanel>
+     
+  //   );
+  // });
 
   return (
     <div className="p-d-flex p-jc-center">
       <div className="tabview-demo">
         <div className="card">
-          <h5>Default</h5>
+        <Button className="test" icon="pi pi-bookmark" className="p-button-rounded p-button-secondary" onClick={()=>setNombre(null)} />
+
+          { !nombre?
+          
           <TabView>
-            <TabPanel header="A">
-              <CoordenadaList cambio={1} />
-            </TabPanel>
-            <TabPanel header="B">
-              <CoordenadaList cambio={2} />
-            </TabPanel>
-            <TabPanel header="C">
-              <CoordenadaList cambio={3} />
-            </TabPanel>
-            <TabPanel header="D">
-              <CoordenadaList cambio={4} />
-            </TabPanel>
-            <TabPanel header="E">
-              <CoordenadaList cambio={5} />
-            </TabPanel>
-            <TabPanel header="F">
-              <CoordenadaList cambio={6} />
-            </TabPanel>
-          </TabView>
+            {namesList}
+          </TabView>:<Coordenada nombre={nombre} productos={productos}/> 
+        }
         </div>
       </div>
     </div>

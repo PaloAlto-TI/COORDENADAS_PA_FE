@@ -9,6 +9,7 @@ const Producto = () => {
     const [selectedCountry, setSelectedCountry] = useState(null);
     const [value17, setValue17] = useState(20);
     const [value1, setValue1] = useState('');
+    
     const countries = [
         {name: 'Australia', code: 'AU'},
         {name: 'Brazil', code: 'BR'},
@@ -58,7 +59,7 @@ const Producto = () => {
         <div className="dropdown-demo">
             <div className="card">
                 <h5>Advanced with Templating, Filtering and Clear Icon</h5>
-                <Dropdown value={selectedCountry} options={countries} onChange={onCountryChange} optionLabel="name" filter showClear filterBy="name" placeholder="Select a Country"
+                <Dropdown className="test" value={selectedCountry} options={countries} onChange={onCountryChange} optionLabel="name" filter showClear filterBy="name" placeholder="Select a Country"
                     valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} />
                 <br/>
                 <br/>

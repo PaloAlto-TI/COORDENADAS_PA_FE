@@ -6,37 +6,31 @@ import about from "../productList/ProductList";
 
 function Prueba1() {
     return (
-
-
         <html>
             <Router>
                 <body>
-                <div>
-                    <Switch>
-                        <Route exact path="/" />
-                        <Route exact path="/about" component={about} />
-                        <Route exact path="/user" />
-                    </Switch>
-                </div>
+                    <div>
+                        <Switch>
+                            <Route exact path="/" />
+                            <Route exact path="/about" component={about} />
+                            <Route exact path="/user" />
+                        </Switch>
+                    </div>
                 </body>
-                <footer  class="pie">
-                <div>
-
-                    <ul>
-                        <li>
-                            <Link to="/">Home</ Link>
-                        </li>
-                        <li>
-                            <Link to="/about">About </Link>
-                        </li>
-                        <li>
-                            <Link to="/user">User</ Link>
-                        </li>
-                        
-                    </ul>
-                  
-
-                </div>
+                <footer class="pie">
+                    <div>
+                        <ul>
+                            <li>
+                                <Link to="/">Home</ Link>
+                            </li>
+                            <li>
+                                <Link to="/about">About </Link>
+                            </li>
+                            <li>
+                                <Link to="/user">User</ Link>
+                            </li>
+                        </ul>
+                    </div>
                 </footer>
             </Router>
         </html >

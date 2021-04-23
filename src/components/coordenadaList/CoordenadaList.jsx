@@ -26,7 +26,7 @@ const CoordenadaList = (props) => {
         <Button
           type="button"
           label={name.nombre}
-          badge={name.products.length ? name.productos.map(a => a.cantidad).reduce((a, b) => a + b, 0) : 0}
+          badge={name.productos.length ? name.productos.map(a => a.cantidad).reduce((a, b) => a + b, 0) : "0"}
           onClick={() => replace(name.nombre, name.productos)}
           className="p-d-block p-mx-auto"
         />

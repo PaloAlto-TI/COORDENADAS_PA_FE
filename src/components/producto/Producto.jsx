@@ -4,23 +4,15 @@ import { InputNumber } from 'primereact/inputnumber';
 import { InputText } from 'primereact/inputtext';
 import './Producto.css';
 
-const Producto = () => {
+const Producto = (props) => {
 
+    const {tipos} = props;
+    
+    console.log(tipos)
     const [selectedCountry, setSelectedCountry] = useState(null);
     const [value17, setValue17] = useState(20);
     const [value1, setValue1] = useState('');
-    const countries = [
-        {name: 'Australia', code: 'AU'},
-        {name: 'Brazil', code: 'BR'},
-        {name: 'China', code: 'CN'},
-        {name: 'Egypt', code: 'EG'},
-        {name: 'France', code: 'FR'},
-        {name: 'Germany', code: 'DE'},
-        {name: 'India', code: 'IN'},
-        {name: 'Japan', code: 'JP'},
-        {name: 'Spain', code: 'ES'},
-        {name: 'United States', code: 'US'}
-    ];
+    const countries = tipos;
  
 
     const onCountryChange = (e) => {
@@ -32,7 +24,7 @@ const Producto = () => {
         if (option) {
             return (
                 <div className="country-item country-item-value">
-                    <div>{option.name}</div>
+                    <div>{option.nombre}</div>
                 </div>
             );
         }
@@ -47,7 +39,7 @@ const Producto = () => {
     const countryOptionTemplate = (option) => {
         return (
             <div className="country-item">
-                <div>{option.name}</div>
+                <div>{option.nombre}</div>
             </div>
         );
     }
@@ -57,19 +49,17 @@ const Producto = () => {
     return (
         <div className="dropdown-demo">
             <div className="card">
-                <h5>Advanced with Templating, Filtering and Clear Icon</h5>
-                <Dropdown className="test" value={selectedCountry} options={countries} onChange={onCountryChange} optionLabel="name" filter showClear filterBy="name" placeholder="Select a Country"
+                <h5>Nombre del producto:</h5>
+                <Dropdown style={{width:'100%'}} value={selectedCountry} options={tipos} onChange={onCountryChange} optionLabel="nombre" filter showClear filterBy="nombre" placeholder="Seleccione"
                     valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} />
                 <br/>
-                <div className="p-field p-col-12 p-md-3">
-                        <label htmlFor="stacked">Stacked</label>
-                        <InputNumber id="stacked" value={value17} onValueChange={(e) => setValue17(e.value)} showButtons />
-                </div>
+                <h5>Cantidad de producto:</h5>
+                <InputNumber min={0} value={value17} onValueChange={(e) => setValue17(e.value)} showButtons />
                 <br/>
-                <h5>Basic</h5>
-                <InputText value={value1} onChange={(e) => setValue1(e.target.value)} />
+                <h5>Observación:</h5>
+                <InputText style={{width:'100%'}} value={value1} onChange={(e) => setValue1(e.target.value)} />
                 <span className="p-ml-2">{value1}</span>
-            </div>
+        </div>
         </div>
     );
 }

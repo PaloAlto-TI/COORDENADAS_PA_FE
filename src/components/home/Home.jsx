@@ -16,7 +16,6 @@ function Home() {
                     <Button type="button" onClick={() => setVisibleRight(false)} label="Cancel" className="p-button-secondary" />
                 </Sidebar>
 
-
                 <Button position="right" icon="pi pi-arrow-left" onClick={() => setVisibleRight(true)} className="p-mr-2" />
             </div>
         </div>

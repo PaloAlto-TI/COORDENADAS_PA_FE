@@ -84,7 +84,11 @@ const Bodega = () => {
     <div className="p-d-flex p-jc-center">
       <div className="tabview-demo">
         <div className="card">
+         <br/>
         <Button className="test" icon="pi pi-arrow-left" className="p-button-rounded p-button-secondary" onClick={()=>setNombre(null)} />
+         <br/>
+         <br/>
+
 
           { !nombre?
           

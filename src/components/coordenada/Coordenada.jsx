@@ -14,9 +14,7 @@ const Coordenada  = (props) => {
         <Panel header="NOMBRE DE LA COORDENADA">
         <p>{nombre}</p>
         </Panel>
-        <Panel header="CONTENIDO">
         <ProductList productos={productos}></ProductList>
-        </Panel>
         </div>
 
     )

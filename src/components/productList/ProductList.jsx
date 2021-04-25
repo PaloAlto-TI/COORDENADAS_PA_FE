@@ -9,8 +9,7 @@ import Producto from "../producto/Producto";
 import { ScrollPanel } from 'primereact/scrollpanel';
 import ProductService from '../../services/products/ProductsService';
 import './ProductList.css';
-import { Dropdown } from 'primereact/dropdown';
-import Select from 'react-select';
+
 
 const ProductList = (props) => {
 
@@ -21,7 +20,7 @@ const ProductList = (props) => {
     const [deleteBtn, setDeleteBtn] = useState(true);
 
     const [globalFilter, setGlobalFilter] = useState(null);
-
+    const [selectedProduct1, setSelectedProduct1] = useState([]);
     const [displayResponsive, setDisplayResponsive] = useState(false);
     const [position, setPosition] = useState('center');
 
@@ -45,9 +44,9 @@ const ProductList = (props) => {
 
     const renderFooter = (name) => {
         return (
-            <div>
-                <Button label="No" icon="pi pi-times" onClick={() => onHide(name)} className="p-button-text" />
-                <Button label="Yes" icon="pi pi-check" onClick={() => onHide(name)} autoFocus />
+            <div >
+                {/* <Button style={{fontSize:'12px'}} label="Cancelar" icon="pi pi-times" onClick={() => onHide(name)} className="p-button-text" /> */}
+                <Button style={{fontSize:'13px'}} label="Guardar" icon="pi pi-check" onClick={() => onHide(name)} autoFocus />
             </div>
         );
     }
@@ -67,13 +66,16 @@ const ProductList = (props) => {
     }
 
     const header = (
-        <div className="table-header">
-            <Button label="Nuevo" icon="pi pi-plus" className="p-mr-2" onClick={() => setDisplayResponsive(true)}/>
-            <Button label="Eliminar" icon="pi pi-trash" className="p-button-danger" disabled={deleteBtn} />
+        <div className="p-grid">
+            
+            { selectedProduct1.length == 0 ?<Button  label="NUEVO" icon="pi pi-plus" className="p-button-sm" onClick={() => setDisplayResponsive(true)}/>
+            :<Button  label="ELIMINAR" icon="pi pi-trash" className="p-button-danger p-button-sm" disabled={deleteBtn} />}
+            <div className="p-col-6 p-md-offset-5">
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
-                <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Buscar..." />
+                <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)}  placeholder="Buscar..." />
             </span>
+            </div>
         </div>
     );
 
@@ -158,25 +160,47 @@ const ProductList = (props) => {
         );
     }
 
+    const actionBodyTemplate = (rowData) => {
+        return (
+            <React.Fragment>
+                <Button icon="pi pi-pencil" className="p-button-rounded p-button-info p-mr-2" onClick={() => console.log(rowData)} />
+            </React.Fragment>
+        );
+    }
+
+    const setTest = (info) => {
+
+        if (info.length > 0){
+
+            setDeleteBtn(false);
+        }else{
+            setDeleteBtn(true);
+
+        }
+        console.log(info);
+        setSelectedProduct1(info);
+    }
+
+    
+
     return (
         <div className="datatable-responsive-demo">
             <div className="card">
         
-                <DataTable header={header} selectionMode="single" value={products} className="p-datatable-responsive-demo" paginator rows={10} globalFilter={globalFilter} onSelectionChange={(e) => eliminar(e.value)} >
+                <DataTable  header={header} style={{width:'100%'}}   selectionMode="checkbox" selection={selectedProduct1} onSelectionChange={e => setTest(e.value)} value={products} className="p-datatable-responsive-demo" paginator rows={10} globalFilter={globalFilter} >
+                    <Column selectionMode="multiple" style={{width:'5%'}}  headerStyle={{width: '3em'}}></Column>
                     <Column field="codigo" style={{width:'20%'}} header="CÓDIGO" body={nameBodyTemplate} sortable/>
                     <Column field="nombre" style={{width:'30%'}} header="NOMBRE" body={quantityBodyTemplate} sortable />
                     <Column field="cantidad" style={{width:'20%'}} header="CANTIDAD" body={categoryBodyTemplate} sortable />
-                    <Column field="observacion" style={{width:'25%'}} header="OBSERVACIÓN" body={codeBodyTemplate} sortable />
+                    <Column field="observacion" style={{width:'20%'}} header="OBSERVACIÓN" body={codeBodyTemplate} sortable />
+                    <Column style={{width:'5%'}} body={actionBodyTemplate}></Column>
                 </DataTable>
                 {/* <Dropdown style={{width:'100%'}} value={selectedCountry} options={data} onChange={onCountryChange} optionLabel="nombre" filter showClear filterBy="nombre" placeholder="Seleccione"
                     valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} />
        */}
-                <Select
-                    placeholder={"Seleccione..."}
-                    options={data}
-                />
+               
                 <Dialog blockScroll={true} contentStyle={{overflow:"visible"}} header="Nuevo Producto" visible={displayResponsive} onHide={() => onHide('displayResponsive')} breakpoints={{'960px': '75vw'}} style={{width: '40vw'}} footer={renderFooter('displayResponsive')} >
-                    <ScrollPanel style={{ width: '100%', height: '300px' }} >
+                    <ScrollPanel style={{ width: '100%', height: '310px' }} >
                         <Producto tipos={data}/>    
                     </ScrollPanel>
 

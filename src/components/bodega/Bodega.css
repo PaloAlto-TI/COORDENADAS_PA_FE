@@ -8,12 +8,42 @@
 
 .tabview-demo .p-button {
     margin-right: .25rem;
+    background-color: #000000;
+    border: 1px solid #000000;
+}
+
+.tabview-demo .p-button:enabled:active {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+.tabview-demo .p-button:enabled:hover {
+    background: #6e6e6e;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+.tabview-demo .p-button .p-badge {
+    color: #000000;
 }
 
 .tabview-demo .p-tabview p {
     line-height: 1.5;
     margin: 0;
+    border-color: #000000;
 }
 
+.tabview-demo .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+    background: #ffffff;
+    border-color: #000000;
+    color: #000000;
+}
+
+.tabview-demo .p-tabview .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem #ffffff;
+}
 
 

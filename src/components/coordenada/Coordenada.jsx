@@ -7,12 +7,20 @@ const Coordenada  = (props) => {
 
     const {nombre, productos} = props;
 
-    console.log(props)
+    const titleFormClass = {
+        textAlign: "Center",
+        fontWeight: "Bold",
+        fontSize: "1.5rem",
+        color: "#000000"
+      }
+
+    console.log('los props ' + props)
+    console.log(nombre)
 
     return (
         <div>
         <Panel header="NOMBRE DE LA COORDENADA">
-        <p>{nombre}</p>
+        <p style={titleFormClass}>{nombre}</p>
         </Panel>
         <Panel header="CONTENIDO">
         <ProductList productos={productos}></ProductList>

@@ -10,10 +10,11 @@ import Bodega from "./components/bodega/Bodega";
 import Login from "./components/login/Login";
 import Producto from "./components/producto/Producto";
 import Coordenada from "./components/coordenada/Coordenada";
+import Home from "./components/home/Home"
 
 function App() {
+  console.log('Aca esta el Index')
   return <div className="App">
-
       {/* <Login></Login> */}
       {/* <Home></Home> */}
       <Bodega></Bodega>

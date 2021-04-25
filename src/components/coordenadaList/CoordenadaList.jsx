@@ -6,7 +6,7 @@ const CoordenadaList = (props) => {
 
   const {cambio, pasar} = props;
 
-  console.log(cambio);
+  console.log(cambio); // Console de las coordenadas que está trayendo de la BD
 
   const [state, setState] = useState(null);
 

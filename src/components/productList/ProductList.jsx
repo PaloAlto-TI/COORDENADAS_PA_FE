@@ -14,6 +14,7 @@ import Select from 'react-select';
 
 const ProductList = (props) => {
 
+    console.log('ENTRA PRODUCT LIST', props)
     const {productos} =props;
     const [products, setProducts] = useState([]);
     const [data, setData] = useState([]);
@@ -62,6 +63,7 @@ const ProductList = (props) => {
 
 
     const cargarProductos = (data) => {
+        console.log('ENTRA A TABLETOP', data)
         setData(data);
         setProducts(productos.map(t1 => ({...t1, ...data.find(t2 => t2.codigo === t1.codigo)})))
     }

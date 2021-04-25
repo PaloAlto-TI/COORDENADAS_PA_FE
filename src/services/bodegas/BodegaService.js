@@ -10,7 +10,8 @@ export default class BodegaService {
 
 
     getBodega() {
-        return axios.get(this.baseUrl +'s/6081d0262705134414ea1b7c').then(res => res.data);
+        // return axios.get(this.baseUrl +'s/6081d0262705134414ea1b7c').then(res => res.data);
+        return axios.get(this.baseUrl +'s/608480329ebb814a33ad8086').then(res => res.data);
     }
 
     // getProductsWithOrdersSmall() {

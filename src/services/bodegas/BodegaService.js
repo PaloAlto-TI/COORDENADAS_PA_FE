@@ -6,7 +6,7 @@ export default class BodegaService {
     //     return axios.get('products-small.json').then(res => res.data.data);
     // }
     //baseUrl = "http://localhost:8080/bodega";
-     baseUrl = "https://distribucion-inventario.herokuapp.com/bodega";
+     baseUrl = "https://coordenadas-pa.herokuapp.com/bodega";
 
 
     getBodega() {

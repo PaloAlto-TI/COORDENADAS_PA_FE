@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/COORDENADAS_PA_FE/static/css/main.dbca2293.chunk.css",
-    "main.js": "/COORDENADAS_PA_FE/static/js/main.fbefe459.chunk.js",
-    "main.js.map": "/COORDENADAS_PA_FE/static/js/main.fbefe459.chunk.js.map",
+    "main.js": "/COORDENADAS_PA_FE/static/js/main.2df43ac3.chunk.js",
+    "main.js.map": "/COORDENADAS_PA_FE/static/js/main.2df43ac3.chunk.js.map",
     "runtime-main.js": "/COORDENADAS_PA_FE/static/js/runtime-main.fd0f1123.js",
     "runtime-main.js.map": "/COORDENADAS_PA_FE/static/js/runtime-main.fd0f1123.js.map",
     "static/css/2.bb6a7501.chunk.css": "/COORDENADAS_PA_FE/static/css/2.bb6a7501.chunk.css",
@@ -24,6 +24,6 @@
     "static/css/2.bb6a7501.chunk.css",
     "static/js/2.b3a9afac.chunk.js",
     "static/css/main.dbca2293.chunk.css",
-    "static/js/main.fbefe459.chunk.js"
+    "static/js/main.2df43ac3.chunk.js"
   ]
 }

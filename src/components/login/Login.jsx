@@ -99,7 +99,7 @@ const Login = () => {
               <label className="Inicia">Inicia Sesión con:</label>
 
               <GoogleLogin
-                clientId="610747110294-o2cruk32qs9j2mi3o9ob1b7dpu4ib35u.apps.googleusercontent.com"
+                clientId="930398454466-1bju770rkgrii8cdopo4pgt3rrline75.apps.googleusercontent.com"
                 buttonText="Google"
                 onSuccess={responseGoogle}
 

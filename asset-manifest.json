@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/COORDENADAS_PA_FE/static/css/main.eba39821.chunk.css",
-    "main.js": "/COORDENADAS_PA_FE/static/js/main.001dfa8e.chunk.js",
-    "main.js.map": "/COORDENADAS_PA_FE/static/js/main.001dfa8e.chunk.js.map",
-    "runtime-main.js": "/COORDENADAS_PA_FE/static/js/runtime-main.72557dc0.js",
-    "runtime-main.js.map": "/COORDENADAS_PA_FE/static/js/runtime-main.72557dc0.js.map",
-    "static/css/2.6131475b.chunk.css": "/COORDENADAS_PA_FE/static/css/2.6131475b.chunk.css",
-    "static/js/2.7031cdd5.chunk.js": "/COORDENADAS_PA_FE/static/js/2.7031cdd5.chunk.js",
-    "static/js/2.7031cdd5.chunk.js.map": "/COORDENADAS_PA_FE/static/js/2.7031cdd5.chunk.js.map",
-    "static/js/3.6f4b7ad3.chunk.js": "/COORDENADAS_PA_FE/static/js/3.6f4b7ad3.chunk.js",
-    "static/js/3.6f4b7ad3.chunk.js.map": "/COORDENADAS_PA_FE/static/js/3.6f4b7ad3.chunk.js.map",
+    "main.css": "/COORDENADAS_PA_FE/static/css/main.296690db.chunk.css",
+    "main.js": "/COORDENADAS_PA_FE/static/js/main.33cc4854.chunk.js",
+    "main.js.map": "/COORDENADAS_PA_FE/static/js/main.33cc4854.chunk.js.map",
+    "runtime-main.js": "/COORDENADAS_PA_FE/static/js/runtime-main.fd0f1123.js",
+    "runtime-main.js.map": "/COORDENADAS_PA_FE/static/js/runtime-main.fd0f1123.js.map",
+    "static/css/2.bb6a7501.chunk.css": "/COORDENADAS_PA_FE/static/css/2.bb6a7501.chunk.css",
+    "static/js/2.b3a9afac.chunk.js": "/COORDENADAS_PA_FE/static/js/2.b3a9afac.chunk.js",
+    "static/js/2.b3a9afac.chunk.js.map": "/COORDENADAS_PA_FE/static/js/2.b3a9afac.chunk.js.map",
+    "static/js/3.21a81f5e.chunk.js": "/COORDENADAS_PA_FE/static/js/3.21a81f5e.chunk.js",
+    "static/js/3.21a81f5e.chunk.js.map": "/COORDENADAS_PA_FE/static/js/3.21a81f5e.chunk.js.map",
     "index.html": "/COORDENADAS_PA_FE/index.html",
     "service-worker.js": "/COORDENADAS_PA_FE/service-worker.js",
     "service-worker.js.map": "/COORDENADAS_PA_FE/service-worker.js.map",
-    "static/css/2.6131475b.chunk.css.map": "/COORDENADAS_PA_FE/static/css/2.6131475b.chunk.css.map",
-    "static/css/main.eba39821.chunk.css.map": "/COORDENADAS_PA_FE/static/css/main.eba39821.chunk.css.map",
-    "static/js/2.7031cdd5.chunk.js.LICENSE.txt": "/COORDENADAS_PA_FE/static/js/2.7031cdd5.chunk.js.LICENSE.txt",
-    "static/media/primereact.min.css": "/COORDENADAS_PA_FE/static/media/color.6441e63a.png",
+    "static/css/2.bb6a7501.chunk.css.map": "/COORDENADAS_PA_FE/static/css/2.bb6a7501.chunk.css.map",
+    "static/css/main.296690db.chunk.css.map": "/COORDENADAS_PA_FE/static/css/main.296690db.chunk.css.map",
+    "static/js/2.b3a9afac.chunk.js.LICENSE.txt": "/COORDENADAS_PA_FE/static/js/2.b3a9afac.chunk.js.LICENSE.txt",
+    "static/media/coordenada.50ee0906.jpg": "/COORDENADAS_PA_FE/static/media/coordenada.50ee0906.jpg",
     "static/media/primeicons.css": "/COORDENADAS_PA_FE/static/media/primeicons.e61f3495.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.72557dc0.js",
-    "static/css/2.6131475b.chunk.css",
-    "static/js/2.7031cdd5.chunk.js",
-    "static/css/main.eba39821.chunk.css",
-    "static/js/main.001dfa8e.chunk.js"
+    "static/js/runtime-main.fd0f1123.js",
+    "static/css/2.bb6a7501.chunk.css",
+    "static/js/2.b3a9afac.chunk.js",
+    "static/css/main.296690db.chunk.css",
+    "static/js/main.33cc4854.chunk.js"
   ]
 }

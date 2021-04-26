@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { createHashHistory } from "history";
 
 
-localStorage.clear();
+// localStorage.clear();
 
 
 
@@ -72,9 +72,9 @@ const Login = () => {
 
   return (
 
-
+    <div>
+      {!localStorage.getItem("persona") ?
     <div className="contenedor1">
-      {!userEstado ?
 
         <div className="contenedor2">
           <div className="content-imagen">
@@ -123,6 +123,7 @@ const Login = () => {
         </div>
 
 
+    </div>
         : <Bodega></Bodega>
       }
     </div>

@@ -80,13 +80,18 @@ const Bodega = () => {
   //   );
   // });
 
+  const salir = () =>{
+    localStorage.clear();
+    window.location.reload();
+  }
+
   return (
     <div className="p-d-flex p-jc-center">
       <div className="tabview-demo">
         <div className="card">
          <br/>
          {
-           nombre ? <Button  className="test" icon="pi pi-arrow-left" className="p-button-rounded p-button-secondary" onClick={()=>setNombre(null)} /> : null
+           nombre ? <Button  className="test" icon="pi pi-arrow-left" className="p-button-rounded p-button-secondary" onClick={()=>setNombre(null)} /> : <Button  className="test" icon="pi pi-sign-out" className="p-button-rounded p-button-secondary" onClick={()=>salir()} />
 
          }
          <br/>

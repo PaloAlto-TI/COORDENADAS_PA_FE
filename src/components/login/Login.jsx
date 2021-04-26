@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { createHashHistory } from "history";
 
 
-// localStorage.clear();
+ localStorage.clear();
 
 
 
@@ -49,9 +49,15 @@ const Login = () => {
 
     const UsuarioCheck = usuarioService.postUsuarioCheck(objctCheck).then(resultado => {
 
-      localStorage.setItem("persona", JSON.stringify(resultado));
+      if (resultado){
 
-      if (localStorage.getItem("persona") != "null") {
+        localStorage.setItem("persona", JSON.stringify(resultado));
+      }else{
+        setUserError(true);
+
+      }
+
+      if (localStorage.getItem("persona") !== "null") {
         console.log("Entra");
         setUserEstado(true);
 
@@ -102,7 +108,6 @@ const Login = () => {
                 clientId="930398454466-1bju770rkgrii8cdopo4pgt3rrline75.apps.googleusercontent.com"
                 buttonText="Google"
                 onSuccess={responseGoogle}
-
                 onFailure={responseGoogle}
                 cookiePolicy={"single_host_origin"}
               />

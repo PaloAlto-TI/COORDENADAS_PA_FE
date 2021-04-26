@@ -96,7 +96,7 @@ const Login = () => {
             </div>
 
             <div className="contenedor6">
-              <label className="Inicia">Inicia Sesión con:</label>
+              <label className="Inicia">Inicia Sesión</label>
 
               <GoogleLogin
                 clientId="930398454466-1bju770rkgrii8cdopo4pgt3rrline75.apps.googleusercontent.com"

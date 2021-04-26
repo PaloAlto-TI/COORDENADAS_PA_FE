@@ -7,11 +7,11 @@ export default class ProductService {
     // }
 
     getProducts() {
-        return axios.get('http://localhost:8080/productos').then(res => res.data);
+        return axios.get('https://distribucion-inventario.herokuapp.com/productos').then(res => res.data);
     }
 
     findProduct(){
-        return axios.get('http://localhost:8080/buscar-producto').then(res => res.data);
+        return axios.get('https://distribucion-inventario.herokuapp.com/buscar-producto').then(res => res.data);
     }
 
     // getProductsWithOrdersSmall() {

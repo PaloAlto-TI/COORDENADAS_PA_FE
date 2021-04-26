@@ -12,9 +12,9 @@ import Coordenada from "./components/coordenada/Coordenada";
 function App() {
   return <div className="App">
 
-      {/* <Login></Login> */}
+      <Login></Login>
       {/* <Home></Home> */}
-      <Bodega></Bodega>
+      {/* <Bodega></Bodega> */}
       {/* <Coordenada></Coordenada> */}
       {/* <ProductList></ProductList> */}
       {/* <Producto></Producto> */}

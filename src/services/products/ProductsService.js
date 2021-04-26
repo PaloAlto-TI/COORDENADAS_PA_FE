@@ -10,6 +10,10 @@ export default class ProductService {
         return axios.get('http://localhost:8080/productos').then(res => res.data);
     }
 
+    findProduct(){
+        return axios.get('http://localhost:8080/buscar-producto').then(res => res.data);
+    }
+
     // getProductsWithOrdersSmall() {
     //     return axios.get('products-orders-small.json').then(res => res.data.data);
     // }

@@ -85,7 +85,10 @@ const Bodega = () => {
       <div className="tabview-demo">
         <div className="card">
          <br/>
-        <Button className="test" icon="pi pi-arrow-left" className="p-button-rounded p-button-secondary" onClick={()=>setNombre(null)} />
+         {
+           nombre ? <Button  className="test" icon="pi pi-arrow-left" className="p-button-rounded p-button-secondary" onClick={()=>setNombre(null)} /> : null
+
+         }
          <br/>
          <br/>
 
@@ -94,7 +97,7 @@ const Bodega = () => {
           
           <TabView>
             {namesList}
-          </TabView>:<Coordenada nombre={nombre} productos={productos}/> 
+          </TabView>:<Coordenada nombre={nombre} productos={productos} bodega={bodega} setBodega={setBodega}/> 
         }
         </div>
       </div>

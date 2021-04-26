@@ -40,3 +40,50 @@ tr:not(.p-highlight):hover {
     text-align: right;
 }
 
+@media only screen and (min-width: 768px) {
+    .chbox{
+        width: 5%;
+    }
+
+    .cod{
+        width: 20%;
+
+
+    }
+
+    .nom{
+        width: 30%;
+
+    }
+
+    .can{
+        width: 20%;
+
+    }
+
+    .obs{
+        width: 20%;
+
+    }
+
+    .act{
+        width: 5%;
+
+    }
+}
+
+
+.p-dialog .p-dialog-content {
+    background: #ffffff;
+    color: #495057;
+    padding: 0 1.5rem 2rem 1.5rem;
+   
+}
+
+
+@media screen and (max-width: 40em){
+.datatable-responsive-demo .p-datatable.p-datatable-responsive-demo .p-datatable-tbody > tr > td:last-child {
+    border-bottom: 1px solid var(--surface-d);
+    text-align: right;
+}
+}

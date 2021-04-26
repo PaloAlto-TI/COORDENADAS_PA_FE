@@ -5,7 +5,7 @@ import "./Coordenada.css";
 
 const Coordenada  = (props) => {
 
-    const {nombre, productos} = props;
+    const {nombre, productos, bodega, setBodega} = props;
 
     console.log(props)
 
@@ -14,7 +14,7 @@ const Coordenada  = (props) => {
         <Panel header="NOMBRE DE LA COORDENADA">
         <p>{nombre}</p>
         </Panel>
-        <ProductList productos={productos}></ProductList>
+        <ProductList nombre={nombre} productos={productos} bodega={bodega} setBodega={setBodega}></ProductList>
         </div>
 
     )

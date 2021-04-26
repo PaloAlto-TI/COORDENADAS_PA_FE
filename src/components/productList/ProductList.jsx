@@ -8,26 +8,49 @@ import { Button } from 'primereact/button';
 import Producto from "../producto/Producto";
 import { ScrollPanel } from 'primereact/scrollpanel';
 import ProductService from '../../services/products/ProductsService';
+import BodegaService from "../../services/bodegas/BodegaService";
+
 import './ProductList.css';
 
 
 const ProductList = (props) => {
 
-    const {productos} =props;
+    const {productos, bodega, setBodega, nombre} =props;
     const [products, setProducts] = useState([]);
     const [data, setData] = useState([]);
-
+    const [product, setProduct] = useState({
+        codigo : null,
+        cantidad : null,
+        observacion : null
+    });
+    
     const [deleteBtn, setDeleteBtn] = useState(true);
-
+    const [aux, setAux] = useState(false);
+    
     const [globalFilter, setGlobalFilter] = useState(null);
     const [selectedProduct1, setSelectedProduct1] = useState([]);
     const [displayResponsive, setDisplayResponsive] = useState(false);
-    const [position, setPosition] = useState('center');
+    const [displayResponsive2, setDisplayResponsive2] = useState(false);
+    const [displayResponsive3, setDisplayResponsive3] = useState(false);
 
+
+    const [position, setPosition] = useState('center');
+    
     const dialogFuncMap = {
 
         'displayResponsive': setDisplayResponsive
     }
+
+    const dialogFuncMap2 = {
+
+        'displayResponsive2': setDisplayResponsive2
+    }
+
+    const dialogFuncMap3= {
+
+        'displayResponsive3': setDisplayResponsive3
+    }
+
 
     const onClick = (name, position) => {
         dialogFuncMap[`${name}`](true);
@@ -38,15 +61,95 @@ const ProductList = (props) => {
     }
 
     const onHide = (name) => {
+
         dialogFuncMap[`${name}`](false);
     }
-  
+
+    const onHide2 = (name) => {
+
+        dialogFuncMap2[`${name}`](false);
+    }
+
+    const onHide3 = (name) => {
+
+        dialogFuncMap3[`${name}`](false);
+    }
+
+    const pruebas = async (name) => {
+
+
+        let _bodega = bodega;
+
+        _bodega.coordenadas.forEach(coordenada => {
+            coordenada.seccion.forEach(seccion => {
+                if (seccion.nombre===nombre){
+                    seccion.productos.push(product)
+                    setProducts(seccion.productos.map(t1 => ({...t1, ...data.find(t2 => t2.codigo === t1.codigo)})))
+                }
+            }); 
+        });
+
+        
+        const bodegaService = new BodegaService();
+        console.log(_bodega);
+        let r = await bodegaService.updateBodega(_bodega).then((data) => setBodega(data));
+        console.log("r", r)
+        dialogFuncMap[`${name}`](false);
+    }
+
+    const editar = async(name) =>{
+
+        let _bodega = bodega;
+
+        let temp_codigo = product.codigo;
+
+        console.log(temp_codigo);
+         _bodega.coordenadas.forEach(coordenada => {
+             coordenada.seccion.forEach(seccion => {
+                
+                if (seccion.nombre===nombre){
+                    let objIndex = seccion.productos.findIndex((obj => obj.codigo == temp_codigo));
+                    seccion.productos[objIndex].codigo = product.codigo
+                    seccion.productos[objIndex].cantidad = product.cantidad
+                    seccion.productos[objIndex].observacion = product.observacion
+                    setProducts(seccion.productos.map(t1 => ({...t1, ...data.find(t2 => t2.codigo === t1.codigo)})))
+                 }
+            }); 
+         });
+
+        
+        const bodegaService = new BodegaService();
+        console.log(_bodega);
+        let r = await bodegaService.updateBodega(_bodega).then((data) => setBodega(data));
+        console.log("r", r)
+        setSelectedProduct1([])
+        dialogFuncMap3[`${name}`](false);
+
+    }
 
     const renderFooter = (name) => {
         return (
             <div >
                 {/* <Button style={{fontSize:'12px'}} label="Cancelar" icon="pi pi-times" onClick={() => onHide(name)} className="p-button-text" /> */}
-                <Button style={{fontSize:'13px'}} label="Guardar" icon="pi pi-check" onClick={() => onHide(name)} autoFocus />
+                <Button style={{fontSize:'13px'}} label="Guardar" icon="pi pi-check" onClick={() => pruebas(name)} autoFocus />
+            </div>
+        );
+    }
+
+    const renderFooter2 = (name) => {
+        return (
+            <div >
+                {/* <Button style={{fontSize:'12px'}} label="Cancelar" icon="pi pi-times" onClick={() => onHide(name)} className="p-button-text" /> */}
+                <Button style={{fontSize:'13px'}} label="Eliminar" icon="pi pi-trash" className="p-button-danger p-button-sm" onClick={() => eliminar(name)} autoFocus />
+            </div>
+        );
+    }
+
+    const renderFooter3 = (name) => {
+        return (
+            <div >
+                {/* <Button style={{fontSize:'12px'}} label="Cancelar" icon="pi pi-times" onClick={() => onHide(name)} className="p-button-text" /> */}
+                <Button style={{fontSize:'13px'}} label="Guardar" icon="pi pi-check" className="p-button-primary p-button-sm" onClick={() => editar(name)} autoFocus />
             </div>
         );
     }
@@ -65,12 +168,34 @@ const ProductList = (props) => {
         setProducts(productos.map(t1 => ({...t1, ...data.find(t2 => t2.codigo === t1.codigo)})))
     }
 
+    const popup = () => {
+        setProduct({
+            codigo : null,
+            cantidad : null,
+            observacion : null
+        });
+        setAux(false)
+        setDisplayResponsive(true)
+    }
+
+    const popup2 = () => {
+        setDisplayResponsive2(true)
+    }
+
+
+    const popup3 = (rowData) => {
+        console.log(rowData);
+        setProduct(rowData)
+        setDisplayResponsive3(true)
+    }
+
     const header = (
         <div className="p-grid">
-            
-            { selectedProduct1.length == 0 ?<Button  label="NUEVO" icon="pi pi-plus" className="p-button-sm" onClick={() => setDisplayResponsive(true)}/>
-            :<Button  label="ELIMINAR" icon="pi pi-trash" className="p-button-danger p-button-sm" disabled={deleteBtn} />}
-            <div className="p-col-6 p-md-offset-5">
+            <div className="p-col-1">
+            { selectedProduct1.length == 0 ? <Button  label="NUEVO" icon="pi pi-plus" className="p-button-sm" onClick={() => popup()}/>
+            :<Button  label="ELIMINAR" icon="pi pi-trash" className="p-button-danger p-button-sm" onClick={() => popup2()} />}
+            </div>
+            <div className="p-col-11">
             <span className="p-input-icon-left">
                 <i className="pi pi-search" />
                 <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)}  placeholder="Buscar..." />
@@ -121,9 +246,31 @@ const ProductList = (props) => {
         );
     }
 
-    const eliminar = (item) => {
-        setDeleteBtn(false);
-        console.log(item)
+    const eliminar = async(name) => {
+        let _bodega = bodega;
+
+        let arr = selectedProduct1.map(p => p.codigo)
+
+         _bodega.coordenadas.forEach(coordenada => {
+             coordenada.seccion.forEach(seccion => {
+                
+                if (seccion.nombre===nombre){
+                    let arr2 = seccion.productos.filter(p => !arr.includes(p.codigo))
+
+                    setProducts(arr2.map(t1 => ({...t1, ...data.find(t2 => t2.codigo === t1.codigo)})))
+                    seccion.productos=arr2;
+                 }
+            }); 
+         });
+
+        
+        const bodegaService = new BodegaService();
+        console.log(_bodega);
+        let r = await bodegaService.updateBodega(_bodega).then((data) => setBodega(data));
+        console.log("r", r)
+        setSelectedProduct1([])
+        dialogFuncMap2[`${name}`](false);
+
     }
 
     const [selectedCountry, setSelectedCountry] = useState(null);
@@ -163,20 +310,14 @@ const ProductList = (props) => {
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
-                <Button icon="pi pi-pencil" className="p-button-rounded p-button-info p-mr-2" onClick={() => console.log(rowData)} />
+                <Button icon="pi pi-pencil" className="p-button-rounded p-button-info p-mr-2" onClick={() => popup3(rowData)} />
             </React.Fragment>
         );
     }
 
     const setTest = (info) => {
 
-        if (info.length > 0){
-
-            setDeleteBtn(false);
-        }else{
-            setDeleteBtn(true);
-
-        }
+       
         console.log(info);
         setSelectedProduct1(info);
     }
@@ -188,12 +329,12 @@ const ProductList = (props) => {
             <div className="card">
         
                 <DataTable  header={header} style={{width:'100%'}}   selectionMode="checkbox" selection={selectedProduct1} onSelectionChange={e => setTest(e.value)} value={products} className="p-datatable-responsive-demo" paginator rows={10} globalFilter={globalFilter} >
-                    <Column selectionMode="multiple" style={{width:'5%'}}  headerStyle={{width: '3em'}}></Column>
-                    <Column field="codigo" style={{width:'20%'}} header="CÓDIGO" body={nameBodyTemplate} sortable/>
-                    <Column field="nombre" style={{width:'30%'}} header="NOMBRE" body={quantityBodyTemplate} sortable />
-                    <Column field="cantidad" style={{width:'20%'}} header="CANTIDAD" body={categoryBodyTemplate} sortable />
-                    <Column field="observacion" style={{width:'20%'}} header="OBSERVACIÓN" body={codeBodyTemplate} sortable />
-                    <Column style={{width:'5%'}} body={actionBodyTemplate}></Column>
+                    <Column className="chbox" selectionMode="multiple"  headerStyle={{width: '3em'}}></Column>
+                    <Column className="cod" field="codigo"  header="CÓDIGO" body={nameBodyTemplate} sortable/>
+                    <Column className="nom" field="nombre" header="NOMBRE" body={quantityBodyTemplate} sortable />
+                    <Column className="can" field="cantidad"  header="CANTIDAD" body={categoryBodyTemplate} sortable />
+                    <Column className="obs" field="observacion"  header="OBSERVACIÓN" body={codeBodyTemplate} sortable />
+                    <Column className="act"  body={actionBodyTemplate}></Column>
                 </DataTable>
                 {/* <Dropdown style={{width:'100%'}} value={selectedCountry} options={data} onChange={onCountryChange} optionLabel="nombre" filter showClear filterBy="nombre" placeholder="Seleccione"
                     valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} />
@@ -201,7 +342,19 @@ const ProductList = (props) => {
                
                 <Dialog blockScroll={true} contentStyle={{overflow:"visible"}} header="Nuevo Producto" visible={displayResponsive} onHide={() => onHide('displayResponsive')} breakpoints={{'960px': '75vw'}} style={{width: '40vw'}} footer={renderFooter('displayResponsive')} >
                     <ScrollPanel style={{ width: '100%', height: '310px' }} >
-                        <Producto tipos={data}/>    
+                        <Producto tipos={data} aux={aux} setProduct={setProduct} product={product} edit={false}  />    
+                    </ScrollPanel>
+
+                </Dialog>
+                <Dialog  contentStyle={{overflow:"visible"}} header="Eliminar Producto(s)" visible={displayResponsive2} onHide={() => onHide2('displayResponsive2')} breakpoints={{'960px': '75vw'}} style={{width: '40vw'}} footer={renderFooter2('displayResponsive2')} >
+                    <ScrollPanel style={{ width: '100%', height: '100px' }} >
+                        <p>¿Está seguro que desea eliminar el/los producto(s) seleccionado(s)?</p> 
+                    </ScrollPanel>
+
+                </Dialog>
+                <Dialog blockScroll={true} contentStyle={{overflow:"visible"}} header="Editar Producto" visible={displayResponsive3} onHide={() => onHide3('displayResponsive3')} breakpoints={{'960px': '75vw'}} style={{width: '40vw'}} footer={renderFooter3('displayResponsive3')} >
+                    <ScrollPanel style={{ width: '100%', height: '310px' }} >
+                        <Producto tipos={data} aux={aux} setProduct={setProduct} product={product} edit={true} />    
                     </ScrollPanel>
 
                 </Dialog>

@@ -52,6 +52,7 @@ const Login = () => {
       if (resultado){
 
         localStorage.setItem("persona", JSON.stringify(resultado));
+        setUserError(false);
       }else{
         setUserError(true);
 

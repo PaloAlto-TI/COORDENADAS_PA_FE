@@ -4,12 +4,14 @@ import "./CoordenadaList.css";
 
 const CoordenadaList = (props) => {
 
+  //  Props con cambio se coordenadas segun seccion
   const {cambio, pasar} = props;
 
   console.log(cambio);
 
   const [state, setState] = useState(null);
 
+  // Reemplazar vista bodega por vista coordenada
   const replace = (nombre, productos) => {
 
     pasar(nombre, productos);
@@ -17,6 +19,8 @@ const CoordenadaList = (props) => {
 
   var names = cambio.seccion
 
+
+  //Mapeo de coordenadas en botones
   var namesList = names.map(function (name) {
     
     return (
@@ -34,7 +38,7 @@ const CoordenadaList = (props) => {
     );
   });
 
-  
+  // Renderiza coordenadas como botones
   return (
     <div className="p-p-4">
     <div className="p-grid p-justify-center">{namesList}</div>

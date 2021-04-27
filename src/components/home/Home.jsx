@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 
+
+//PRUEBAS (NO USADO)
 function Home() {
     const [visibleRight, setVisibleRight] = useState(false);
 

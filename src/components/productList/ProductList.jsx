@@ -14,6 +14,7 @@ import './ProductList.css';
 
 const ProductList = (props) => {
 
+    //ESTADOS PARA PRODUCTOS Y BODEGA
     const {productos, bodega, setBodega, nombre} =props;
     const [products, setProducts] = useState([]);
     const [data, setData] = useState([]);
@@ -23,6 +24,8 @@ const ProductList = (props) => {
         observacion : null
     });
     
+
+    //ESTADOS PARA MANEJO DE INTERFAZ
     const [aux, setAux] = useState(false);
     
     const [globalFilter, setGlobalFilter] = useState(null);
@@ -32,7 +35,7 @@ const ProductList = (props) => {
     const [displayResponsive3, setDisplayResponsive3] = useState(false);
 
 
-    
+    // COMPONENTES PARA CERRAR POPUP
     const dialogFuncMap = {
 
         'displayResponsive': setDisplayResponsive
@@ -49,6 +52,8 @@ const ProductList = (props) => {
     }
 
 
+    // FUNCIONES PARA CERRAR POPUP
+
     const onHide = (name) => {
 
         dialogFuncMap[`${name}`](false);
@@ -64,6 +69,7 @@ const ProductList = (props) => {
         dialogFuncMap3[`${name}`](false);
     }
 
+    //FUNCION PARA GUARDAR PRODUCTO
     const pruebas = async (name) => {
 
 
@@ -85,6 +91,8 @@ const ProductList = (props) => {
         console.log("r", r)
         dialogFuncMap[`${name}`](false);
     }
+
+    //FUNCION PARA EDITAR PRODUCTO
 
     const editar = async(name) =>{
 
@@ -116,6 +124,7 @@ const ProductList = (props) => {
 
     }
 
+    // COMPONENTES PARA FOOTER EN POPUP
     const renderFooter = (name) => {
         return (
             <div >
@@ -140,6 +149,7 @@ const ProductList = (props) => {
         );
     }
 
+    // CARGA DE DATOS EN TABLA
     useEffect(() => {
         Tabletop.init({
              key: "1ql5KNB3jFHOAdqnZ0whtO2PHqOnTs5J0upieWU3v1L8",
@@ -147,11 +157,15 @@ const ProductList = (props) => {
          }).then(data => cargarProductos(data) );
     }, []);
 
+
+    //FUNCION PARA JOIN CON SHEETS
     const cargarProductos = (data) => {
         setData(data);
         setProducts(productos.map(t1 => ({...t1, ...data.find(t2 => t2.codigo === t1.codigo)})))
     }
 
+
+    //FUNCIONES PARA POPUPS
     const popup = () => {
         setProduct({
             codigo : null,
@@ -173,6 +187,7 @@ const ProductList = (props) => {
         setDisplayResponsive3(true)
     }
 
+    //COMPONENTE HEADER DE TABLA
     const header = (
         <div className="p-grid">
             <div className="p-col-1">
@@ -188,6 +203,7 @@ const ProductList = (props) => {
         </div>
     );
 
+    //COMPONENTES PARA RESPONSIVE DE LA TABLA
     const codeBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
@@ -230,6 +246,8 @@ const ProductList = (props) => {
         );
     }
 
+
+    //FUNCION PARA ELIMINAR PRODUCTO
     const eliminar = async(name) => {
         let _bodega = bodega;
 
@@ -258,6 +276,7 @@ const ProductList = (props) => {
     }
 
 
+    // COMPONENTE COLUMNA EDITAR EN TABLA
     const actionBodyTemplate = (rowData) => {
         return (
             <React.Fragment>
@@ -266,6 +285,7 @@ const ProductList = (props) => {
         );
     }
 
+    //FUNCION SELECIONA PRODUCTO
     const setTest = (info) => {
 
        

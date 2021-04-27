@@ -6,12 +6,16 @@ import './Producto.css';
 
 const Producto = (props) => {
 
+    //PROPS PARA LISTADO DE PRODUCTOS Y PRODUCTO SELECCIONADO
     const {tipos, setProduct, product, edit} = props;
     
+    //MENSAJE PARA BUSQUEDA NO ENCONTRADA
     const customNoDataRenderer = ({ props, state, methods }) => (
         <p>No hay coincidencias</p>
       );
 
+
+    //FUNCION PARA ACTUALIZAR STATE DE PRODUCTO
     const updateField = (data, field) => {
         setProduct({
           ...product,

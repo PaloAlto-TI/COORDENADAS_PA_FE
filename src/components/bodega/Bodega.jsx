@@ -8,6 +8,8 @@ import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 
 const Bodega = () => {
+
+  //Estados de Bodega y Productos
   const [nombre, setNombre] = useState(null);
   const [productos, setProductos] = useState([]);
 
@@ -24,6 +26,7 @@ const Bodega = () => {
     coordenadas: [],
   });
 
+  //Servicio para consumir APi
   const bodegaService = new BodegaService();
 
   const pasar = (nombre, productos) => {
@@ -32,18 +35,21 @@ const Bodega = () => {
     setNombre(nombre);
   };
 
+  //Carga de bodega
   useEffect(() => {
     bodegaService.getBodega().then((data) => setBodega(data));
   }, []);
 
   var names = [];
 
+  //Generación de secciones en tabs
   if (bodega.dimension) {
     names = Array.from({ length: bodega.dimension.z }, (_, i) =>
       String.fromCharCode("A".charCodeAt(0) + i)
     );
   }
 
+  //Generación de coordenadas por seccion
   var namesList = bodega.coordenadas.map(function (coordenada) {
     var aux = names[coordenada.seccion[0].ubicacion.z];
 
@@ -56,6 +62,7 @@ const Bodega = () => {
 
 
 
+  //Funcion logout
   const salir = () => {
     localStorage.clear();
     var cookies = document.cookie.split(";");
@@ -69,6 +76,8 @@ const Bodega = () => {
     window.location.reload();
   };
 
+
+  
   return (
     <div className="p-d-flex p-jc-center">
       <div className="tabview-demo">

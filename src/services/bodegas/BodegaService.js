@@ -3,6 +3,7 @@ import axios from 'axios';
 export default class BodegaService {
 
 
+    //SERVICIO PARA CONSUMIR BODEGAS
      baseUrl = "https://coordenadas-pa.herokuapp.com/bodega";
 
 

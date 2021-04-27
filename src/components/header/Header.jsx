@@ -2,6 +2,8 @@ import React from "react";
 import { Sidebar } from "primereact/sidebar";
 import "./Header.css";
 
+
+//PRUEBAS (NO USADO)
 const Header = () => {
   const [visibleRight, setVisibleRight] = useState(false);
   return (

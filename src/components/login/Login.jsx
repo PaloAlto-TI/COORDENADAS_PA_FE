@@ -6,7 +6,7 @@ import "./Login.css";
 import imagen from "./Imagenes/coordenada.jpg";
 import Bodega from "../bodega/Bodega";
 
-
+//PARTE JONNATHAN
  localStorage.clear();
 
 const Login = () => {

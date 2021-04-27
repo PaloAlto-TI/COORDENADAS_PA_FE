@@ -2,42 +2,20 @@ import React from "react";
 import { GoogleLogin } from 'react-google-login';
 import UsuarioService from '../../services/Usuarios/UsuariosService';
 import { useState } from 'react';
-import reactDom from "react-dom";
 import "./Login.css";
 import imagen from "./Imagenes/coordenada.jpg";
 import Bodega from "../bodega/Bodega";
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import { createHashHistory } from "history";
 
 
  localStorage.clear();
-
-
-
-
-
-
 
 const Login = () => {
   const [userEstado, setUserEstado] = useState(false);
   const [userError, setUserError] = useState(false);
 
-  const [Userhook, setUserhook] = useState({
-    codigo: null,
-    mail: null,
-    nombre: null,
-    apellido: null,
-    bodegas: null,
-    rol: null,
-    estado: null
-
-  });
-
-
 
   const responseGoogle = (response) => {
 
-    // console.log(response.profileObj.email);
     const usuarioService = new UsuarioService();
     const objctCheck = {
       "mail": response.profileObj.email

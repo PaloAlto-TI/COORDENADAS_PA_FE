@@ -3,13 +3,11 @@ import { TabView, TabPanel } from "primereact/tabview";
 import CoordenadaList from "../coordenadaList/CoordenadaList";
 import BodegaService from "../../services/bodegas/BodegaService";
 import "./Bodega.css";
-import ProductList from "../productList/ProductList";
 import Coordenada from "../coordenada/Coordenada";
 import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 
 const Bodega = () => {
-  const [state, setState] = useState(null);
   const [nombre, setNombre] = useState(null);
   const [productos, setProductos] = useState([]);
 
@@ -32,7 +30,6 @@ const Bodega = () => {
     console.log("p", productos);
     setProductos(productos);
     setNombre(nombre);
-    setState(true);
   };
 
   useEffect(() => {
@@ -57,16 +54,7 @@ const Bodega = () => {
     );
   });
 
-  // var namesList = names.map(function (name) {
 
-  //   return (
-
-  //     <TabPanel key={name} header={name}>
-  //     <CoordenadaList cambio={name} pasar={pasar} />
-  //     </TabPanel>
-
-  //   );
-  // });
 
   const salir = () => {
     localStorage.clear();
@@ -88,14 +76,12 @@ const Bodega = () => {
           <br />
           {nombre ? (
             <Button
-              className="test"
               icon="pi pi-arrow-left"
               className="p-button-rounded p-button-secondary"
               onClick={() => setNombre(null)}
             />
           ) : (
             <Button
-              className="test"
               icon="pi pi-sign-out"
               className="p-button-rounded p-button-secondary"
               onClick={() => salir()}

@@ -7,7 +7,6 @@ import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import Producto from "../producto/Producto";
 import { ScrollPanel } from 'primereact/scrollpanel';
-import ProductService from '../../services/products/ProductsService';
 import BodegaService from "../../services/bodegas/BodegaService";
 
 import './ProductList.css';
@@ -24,7 +23,6 @@ const ProductList = (props) => {
         observacion : null
     });
     
-    const [deleteBtn, setDeleteBtn] = useState(true);
     const [aux, setAux] = useState(false);
     
     const [globalFilter, setGlobalFilter] = useState(null);
@@ -34,7 +32,6 @@ const ProductList = (props) => {
     const [displayResponsive3, setDisplayResponsive3] = useState(false);
 
 
-    const [position, setPosition] = useState('center');
     
     const dialogFuncMap = {
 
@@ -51,14 +48,6 @@ const ProductList = (props) => {
         'displayResponsive3': setDisplayResponsive3
     }
 
-
-    const onClick = (name, position) => {
-        dialogFuncMap[`${name}`](true);
-
-        if (position) {
-            setPosition(position);
-        }
-    }
 
     const onHide = (name) => {
 
@@ -108,7 +97,7 @@ const ProductList = (props) => {
              coordenada.seccion.forEach(seccion => {
                 
                 if (seccion.nombre===nombre){
-                    let objIndex = seccion.productos.findIndex((obj => obj.codigo == temp_codigo));
+                    let objIndex = seccion.productos.findIndex((obj => obj.codigo === temp_codigo));
                     seccion.productos[objIndex].codigo = product.codigo
                     seccion.productos[objIndex].cantidad = product.cantidad
                     seccion.productos[objIndex].observacion = product.observacion
@@ -130,7 +119,6 @@ const ProductList = (props) => {
     const renderFooter = (name) => {
         return (
             <div >
-                {/* <Button style={{fontSize:'12px'}} label="Cancelar" icon="pi pi-times" onClick={() => onHide(name)} className="p-button-text" /> */}
                 <Button style={{fontSize:'13px'}} label="Guardar" icon="pi pi-check" onClick={() => pruebas(name)} autoFocus />
             </div>
         );
@@ -139,7 +127,6 @@ const ProductList = (props) => {
     const renderFooter2 = (name) => {
         return (
             <div >
-                {/* <Button style={{fontSize:'12px'}} label="Cancelar" icon="pi pi-times" onClick={() => onHide(name)} className="p-button-text" /> */}
                 <Button style={{fontSize:'13px'}} label="Eliminar" icon="pi pi-trash" className="p-button-danger p-button-sm" onClick={() => eliminar(name)} autoFocus />
             </div>
         );
@@ -148,7 +135,6 @@ const ProductList = (props) => {
     const renderFooter3 = (name) => {
         return (
             <div >
-                {/* <Button style={{fontSize:'12px'}} label="Cancelar" icon="pi pi-times" onClick={() => onHide(name)} className="p-button-text" /> */}
                 <Button style={{fontSize:'13px'}} label="Guardar" icon="pi pi-check" className="p-button-primary p-button-sm" onClick={() => editar(name)} autoFocus />
             </div>
         );
@@ -159,9 +145,7 @@ const ProductList = (props) => {
              key: "1ql5KNB3jFHOAdqnZ0whtO2PHqOnTs5J0upieWU3v1L8",
              simpleSheet: true
          }).then(data => cargarProductos(data) );
-        //setProducts(productos);
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
+    }, []);
 
     const cargarProductos = (data) => {
         setData(data);
@@ -192,7 +176,7 @@ const ProductList = (props) => {
     const header = (
         <div className="p-grid">
             <div className="p-col-1">
-            { selectedProduct1.length == 0 ? <Button  label="NUEVO" icon="pi pi-plus" className="p-button-sm" onClick={() => popup()}/>
+            { selectedProduct1.length === 0 ? <Button  label="NUEVO" icon="pi pi-plus" className="p-button-sm" onClick={() => popup()}/>
             :<Button  label="ELIMINAR" icon="pi pi-trash" className="p-button-danger p-button-sm" onClick={() => popup2()} />}
             </div>
             <div className="p-col-11">
@@ -273,39 +257,6 @@ const ProductList = (props) => {
 
     }
 
-    const [selectedCountry, setSelectedCountry] = useState(null);
-    const [value17, setValue17] = useState(20);
-    const [value1, setValue1] = useState('');
- 
-
-    const onCountryChange = (e) => {
-        setSelectedCountry(e.value);
-    }
-
-
-    const selectedCountryTemplate = (option, props) => {
-        if (option) {
-            return (
-                <div className="country-item country-item-value">
-                    <div>{option.nombre}</div>
-                </div>
-            );
-        }
-
-        return (
-            <span>
-                {props.placeholder}
-            </span>
-        );
-    }
-
-    const countryOptionTemplate = (option) => {
-        return (
-            <div className="country-item">
-                <div>{option.nombre}</div>
-            </div>
-        );
-    }
 
     const actionBodyTemplate = (rowData) => {
         return (
@@ -336,9 +287,6 @@ const ProductList = (props) => {
                     <Column className="obs" field="observacion"  header="OBSERVACIÓN" body={codeBodyTemplate} sortable />
                     <Column className="act"  body={actionBodyTemplate}></Column>
                 </DataTable>
-                {/* <Dropdown style={{width:'100%'}} value={selectedCountry} options={data} onChange={onCountryChange} optionLabel="nombre" filter showClear filterBy="nombre" placeholder="Seleccione"
-                    valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} />
-       */}
                
                 <Dialog blockScroll={true} contentStyle={{overflow:"visible"}} header="Nuevo Producto" visible={displayResponsive} onHide={() => onHide('displayResponsive')} breakpoints={{'960px': '75vw'}} style={{width: '40vw'}} footer={renderFooter('displayResponsive')} >
                     <ScrollPanel style={{ width: '100%', height: '310px' }} >
